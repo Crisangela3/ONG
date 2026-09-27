@@ -100,20 +100,26 @@
 
             <h2>Entre em contato</h2>
 
+            <p class="aviso-demonstracao">
+                <strong>Observação:</strong>
+                os dados de contato desta página são fictícios e aparecem somente para demonstração.
+                Não envie mensagens nem faça ligações para esses contatos.
+            </p>
+
             <div class="contato__itens">
                 <p class="contato__item">
                     <svg class="contato__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <rect x="3" y="5" width="18" height="14" rx="2"></rect>
                         <path d="m4 7 8 6 8-6"></path>
                     </svg>
-                    <span>E-mail: <a href="mailto:sementes_do_futuro@ong.org.br">sementes_do_futuro@ong.org.br</a></span>
+                    <span>E-mail demonstrativo: sementes_do_futuro@ong.org.br</span>
                 </p>
 
                 <p class="contato__item">
                     <svg class="contato__icone" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                         <path d="M5 3h4l2 5-3 2a16 16 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2C10 20 4 14 3 5a2 2 0 0 1 2-2Z"></path>
                     </svg>
-                    <span>Telefone: <a href="tel:+5511912345678">(11) 91234-5678</a></span>
+                    <span>Telefone demonstrativo: (11) 91234-5678</span>
                 </p>
 
                 <p class="contato__item">
@@ -121,7 +127,7 @@
                         <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20l.9-4.7a8.5 8.5 0 1 1 16.6-3.6Z"></path>
                         <path d="M8.5 8.2c.3-.6.6-.6 1-.6h.4c.2 0 .4 0 .5.4l.7 1.7c.1.3.1.5-.1.7l-.6.7c-.2.2-.2.4-.1.6.5.9 1.3 1.7 2.2 2.2.2.1.4.1.6-.1l.7-.8c.2-.2.4-.3.7-.2l1.7.8c.3.1.4.3.4.5 0 .5-.2 1-.6 1.3-.4.4-1 .6-1.7.5-1.1-.2-2.5-.8-3.9-2.1-1.2-1.1-2-2.5-2.2-3.5-.2-.8.1-1.6.4-2.1Z"></path>
                     </svg>
-                    <span>WhatsApp: <a href="https://wa.me/5511912345678">(11) 91234-5678</a></span>
+                    <span>WhatsApp demonstrativo: (11) 91234-5678</span>
                 </p>
 
                 <p class="contato__item">
@@ -212,32 +218,90 @@
 
             <p>
 
-                Você pode contribuir com nossas ações sociais
-
-                através de doações.
+                Sua generosidade é a água que rega o nosso futuro. Cada contribuição para as Sementes do Futuro se transforma em sorrisos, oportunidades e inclusão para quem mais precisa. Venha fazer parte dessa colheita de amor; entre em contato conosco e saiba como doar.
 
             </p>
 
-            <p>
+            <div class="doacao-demo">
+                <div class="doacao-demo__chaves" aria-labelledby="titulo-chaves-pix">
+                    <h3 id="titulo-chaves-pix">Chaves PIX demonstrativas</h3>
+                    <p>Os dados abaixo são fictícios e servem somente para apresentar o layout.</p>
+                    <dl class="doacao-demo__lista">
+                        <div>
+                            <dt>Chave de e-mail</dt>
+                            <dd>sementes_do_futuro@ong.org.br</dd>
+                        </div>
+                        <div>
+                            <dt>Chave de telefone</dt>
+                            <dd>(11) 91234-5678</dd>
+                        </div>
+                    </dl>
+                </div>
+                <figure class="doacao-demo__qr">
+                    <img
+                        src="assets/qr-code-demonstracao.svg"
+                        width="220"
+                        height="220"
+                        alt="Ilustração decorativa de um QR Code, não escaneável e sem função de pagamento"
+                        loading="lazy"
+                    >
+                    <figcaption>QR Code ilustrativo — não escaneável e sem função de pagamento.</figcaption>
+                </figure>
+            </div>
 
-                Para mais informações, entre em contato conosco.
+            <div class="alerta alerta-info doacao-demo__aviso" role="note">
+                <strong>Observação:</strong>
+                o e-mail, o telefone e o QR Code desta demonstração são fictícios.
+                O QR Code é apenas ilustrativo, não pode ser escaneado e não realiza pagamentos.
+                Não faça transferências usando estes dados; em uma situação real, confirme as chaves oficiais diretamente com a ONG.
+            </div>
 
+            <p class="doacao-demo__comprovante">
+                Em uma situação real, confirme o e-mail oficial diretamente com a ONG e, se solicitado,
+                envie o comprovante como anexo para pedir a confirmação da doação.
+                O endereço mostrado nesta demonstração é fictício e não recebe mensagens.
             </p>
 
-            <!-- ALERTA INFORMATIVO -->
-
-            <div
-
-                class="alerta alerta-info"
-
-                role="alert"
-
-            >
-
-                <strong>Informação:</strong>
-
-                Toda contribuição ajuda a manter nossas ações sociais.
-
+            <div class="doacao-envio">
+                <h3 id="titulo-envio-comprovante">Compartilhar comprovante (demonstração)</h3>
+                <p class="doacao-envio__opcional">
+                    O envio do comprovante não é obrigatório. Caso queira, você pode enviá-lo apenas para controle interno da ONG.
+                </p>
+                <p id="orientacao-envio-comprovante">
+                    Se optar por anexá-lo, selecione uma imagem ou PDF de até 5 MB. Você também pode escrever uma observação.
+                    Este formulário é apenas demonstrativo: não envia nem armazena arquivos ou mensagens.
+                </p>
+                <form class="doacao-envio__form" id="formularioComprovante" aria-describedby="orientacao-envio-comprovante">
+                    <div>
+                        <label for="arquivoComprovante">Imagem ou comprovante em PDF</label>
+                        <input
+                            type="file"
+                            id="arquivoComprovante"
+                            name="arquivoComprovante"
+                            accept=".png,.jpg,.jpeg,.gif,.webp,.avif,.pdf,image/png,image/jpeg,image/gif,image/webp,image/avif,application/pdf"
+                            aria-describedby="limite-arquivo statusComprovante"
+                            required
+                        >
+                        <small id="limite-arquivo">Formatos aceitos: imagens ou PDF. Tamanho máximo: 5 MB.</small>
+                    </div>
+                    <div>
+                        <label for="mensagemComprovante">Observação (opcional)</label>
+                        <textarea
+                            id="mensagemComprovante"
+                            name="mensagemComprovante"
+                            rows="3"
+                            maxlength="300"
+                            placeholder="Campo demonstrativo; não inclua dados pessoais ou bancários."
+                        ></textarea>
+                    </div>
+                    <button type="submit">Enviar (demonstração)</button>
+                    <p class="doacao-envio__status" id="statusComprovante" role="status" aria-live="polite" tabindex="-1" hidden></p>
+                </form>
+                <p class="doacao-envio__alternativas">
+                    Em uma versão real, a confirmação poderia ser enviada por aqui após configurar um serviço seguro
+                    ou pelos canais oficiais da ONG. Os contatos exibidos nesta página são fictícios; por isso, nenhum
+                    botão envia mensagens por e-mail ou WhatsApp.
+                </p>
             </div>
 
         </section>

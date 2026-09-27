@@ -1409,6 +1409,13 @@ main.spa-ativo > section:not([hidden]) {
     overflow-wrap: anywhere;
 }
 
+.aviso-demonstracao {
+    padding: var(--espaco-2);
+    border-left: 4px solid var(--cor-info);
+    border-radius: 6px;
+    background-color: var(--cor-info-claro);
+}
+
 .contato__item a {
     color: inherit;
     text-underline-offset: 3px;
@@ -1422,6 +1429,123 @@ main.spa-ativo > section:not([hidden]) {
     outline: 3px solid var(--cor-azul-escuro);
     outline-offset: 2px;
     border-radius: 2px;
+}
+
+/* Demonstração de doações */
+.doacao-demo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 240px);
+    align-items: center;
+    gap: var(--espaco-4);
+    margin-block: var(--espaco-3);
+    padding: var(--espaco-3);
+    border: 1px solid var(--cor-cinza-medio);
+    border-radius: 10px;
+    background-color: var(--cor-cinza-claro);
+}
+
+.doacao-demo__chaves h3 {
+    margin-top: 0;
+    color: var(--cor-azul-escuro);
+}
+
+.doacao-demo__lista {
+    display: grid;
+    gap: var(--espaco-2);
+    margin: 0;
+}
+
+.doacao-demo__lista dt {
+    font-weight: bold;
+}
+
+.doacao-demo__lista dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+.doacao-demo__qr {
+    margin: 0;
+    text-align: center;
+}
+
+.doacao-demo__qr img {
+    display: block;
+    width: min(100%, 220px);
+    height: auto;
+    margin-inline: auto;
+    padding: var(--espaco-1);
+    border: 1px solid var(--cor-cinza-medio);
+    border-radius: 8px;
+    background-color: var(--cor-branco);
+}
+
+.doacao-demo__qr figcaption {
+    margin-top: var(--espaco-1);
+    font-size: var(--fonte-pequena);
+}
+
+.doacao-demo__aviso {
+    color: var(--cor-cinza-escuro);
+}
+
+@media (max-width: 600px) {
+    .doacao-demo {
+        grid-template-columns: minmax(0, 1fr);
+        padding: var(--espaco-2);
+    }
+}
+
+.doacao-envio {
+    margin-top: var(--espaco-4);
+    padding: var(--espaco-3);
+    border: 1px solid var(--cor-cinza-medio);
+    border-radius: 10px;
+    background-color: var(--cor-branco);
+}
+
+.doacao-envio h3 {
+    margin-top: 0;
+    color: var(--cor-azul-escuro);
+}
+
+.doacao-envio__form {
+    margin-top: var(--espaco-2);
+}
+
+.doacao-envio__form > div {
+    display: grid;
+    gap: var(--espaco-1);
+}
+
+.doacao-envio__form input[type="file"] {
+    min-width: 0;
+    padding: var(--espaco-1);
+}
+
+.doacao-envio__form small {
+    color: var(--cor-cinza-escuro);
+}
+
+.doacao-envio__status {
+    margin: 0;
+    padding: var(--espaco-2);
+    border-left: 4px solid var(--cor-info);
+    border-radius: 6px;
+    background-color: var(--cor-info-claro);
+    color: var(--cor-cinza-escuro);
+    overflow-wrap: anywhere;
+}
+
+.doacao-envio__alternativas {
+    margin-bottom: 0;
+    font-size: var(--fonte-pequena);
+}
+
+@media (max-width: 600px) {
+    .doacao-envio {
+        padding: var(--espaco-2);
+    }
 }
 
 /* Demonstração de feedback */

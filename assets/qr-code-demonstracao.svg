@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 210" role="img" aria-labelledby="title desc">
+  <title id="title">Ilustração de QR Code para demonstração</title>
+  <desc id="desc">Padrão decorativo não escaneável e sem função de pagamento.</desc>
+  <rect width="210" height="210" rx="8" fill="#fff"/>
+  <g fill="#17324d">
+    <path d="M10 10h60v60H10zm10 10v40h40V20zm10 10h20v20H30zM140 10h60v60h-60zm10 10v40h40V20zm10 10h20v20h-20zM10 140h60v60H10zm10 10v40h40v-40zm10 10h20v20H30z"/>
+    <path d="M80 10h10v10H80zm20 0h20v10h-20zM80 30h20v10H80zm30 0h10v20h-10zM80 50h20v10H80zm30 10h20v10h-20zM80 70h10v20H80zm20 10h20v10h-20zM130 80h10v20h-10zm20-10h10v20h-10zm20 10h10v10h-10zm20-10h10v20h-10zM10 80h10v10H10zm20 0h20v10H30zm30 0h20v10H60zM20 100h10v20H20zm20-10h10v10H40zm20 10h20v10H60zm20 10h20v10H80zm20-10h10v20h-10zm20 10h10v10h-10zm20-10h20v10h-20zm30 0h20v10h-20zM10 130h10v10H10zm20 0h20v10H30zm30 0h20v10H60zm20 10h10v20H80zm20-10h20v10h-20zm20 20h10v10h-10zm20-10h20v10h-20zm20 20h10v10h-10zm20-20h10v20h-10zm-70 20h10v10h-10zm20 10h20v10h-20zm30 0h10v10h-10zm20 10h10v10h-10zm20-10h10v20h-10z"/>
+  </g>
+  <rect x="78" y="78" width="54" height="54" rx="10" fill="#fff"/>
+  <circle cx="105" cy="105" r="25" fill="#00757d"/>
+  <text x="105" y="110" fill="#fff" font-family="Arial,sans-serif" font-size="13" font-weight="700" text-anchor="middle">PIX</text>
+</svg>

@@ -26,8 +26,18 @@ Depois, acesse <http://localhost:8000>.
 - `js/formulario.js`: validação do formulário e resumo de erros.
 - `js/feedback.js`: notificações toast.
 - `js/modal.js`: diálogos e gerenciamento de foco.
+- `js/doacoes.js`: validação local do anexo demonstrativo, sem envio ou armazenamento.
 - `js/projetos.js`: renderização da galeria usando os dados e o `<template>`.
 - `assets/`: imagens do site.
+
+Os dados de e-mail, telefone e WhatsApp exibidos no contato e na seção de
+doações são fictícios e não recebem mensagens ou ligações. A imagem do QR Code
+é decorativa, não é escaneável e não inicia pagamentos. Não use esses dados para
+transferências nem para enviar comprovantes.
+
+O formulário de comprovante é apenas uma demonstração local. Ele não transmite
+nem armazena arquivos ou mensagens; para habilitar recebimento real, será
+necessário configurar um serviço seguro e canais oficiais confirmados.
 
 ## Fluxo de versionamento
 

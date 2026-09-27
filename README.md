@@ -93,3 +93,6 @@ Para publicar:
 
 Não há uma URL de produção registrada neste documento: acrescente-a somente
 depois de concluir e verificar o deploy.
+
+LINK VERCEL ADICIONADO: https://ong-swart-theta.vercel.app/
+

@@ -61,17 +61,16 @@ endereço e mensagem não são persistidos.
 
 ## Fluxo de versionamento
 
-O repositório remoto do projeto está no GitHub. Até o momento, o trabalho foi
-feito principalmente na branch `main`; o fluxo abaixo é uma recomendação para
-as próximas alterações, não uma descrição de práticas já realizadas:
+O repositório remoto do projeto está no GitHub. Nesta revisão, foi criada a
+branch `develop` a partir de `main` e a branch
+`feature/activity-iv-corrections` a partir de `develop`. A Issue #1 registra o
+escopo, e o Pull Request #2 propõe integrar a branch de funcionalidade em
+`develop`. O PR permanece aberto; ainda não foi feito o merge.
 
-1. Mantenha `main` como branch estável.
-2. Crie uma branch por alteração, por exemplo `feat/acessibilidade` ou
-   `docs/guia-de-uso`.
-3. Use mensagens de commit objetivas, como `feat: adiciona atalho para o conteúdo`
-   ou `docs: documenta publicação na Vercel`.
-4. Abra um Pull Request para `main`, descreva a mudança, anexe evidências reais
-   e registre os testes executados antes de integrar.
+Nas próximas alterações, o fluxo planejado é registrar o escopo em uma Issue,
+criar uma branch `feature/*` a partir de `develop`, usar commits objetivos e
+abrir um Pull Request para revisão antes de integrar. A branch `main` deve
+permanecer estável para a versão de produção.
 
 ## Verificações antes da entrega
 
@@ -101,17 +100,18 @@ antes de afirmar que o site atende integralmente à WCAG 2.1 AA.
 
 ## Publicação na Vercel
 
-O projeto gera arquivos estáticos com Vite. Para publicar:
+O projeto gera arquivos estáticos com Vite. A configuração de build usada é
+`npm install`, `npm run build` e diretório de saída `dist`.
 
-1. Crie ou use um repositório GitHub que contenha estes arquivos na raiz.
-2. Na Vercel, importe o repositório, selecione o preset **Other**, configure o
-   comando de instalação como `npm install`, o comando de build como
-   `npm run build` e o diretório de saída como `dist`.
-3. Faça o deploy e teste a URL gerada, incluindo a navegação por hash, imagens e
-   formulário. O formulário apenas valida os dados no navegador; não os envia
-   para um servidor.
-4. Registre a URL publicada e evidências dos testes reais na entrega.
+Após o push da branch `feature/activity-iv-corrections`, a integração GitHub da
+Vercel criou automaticamente um Preview e informou o estado **Ready** no
+Pull Request #2. URL do Preview:
+<https://ong-git-feature-activity-41d382-angela-cristina-silvas-projects.vercel.app>.
+O estado e os detalhes do deploy podem ser consultados em **Deployments** na
+Vercel ou no resumo de ambientes do Pull Request.
 
-A URL atualmente publicada é <https://ong-swart-theta.vercel.app/>. Ela ainda
-precisa receber e validar um novo deploy para refletir o build configurado
-com Vite.
+A URL de produção previamente publicada é
+<https://ong-swart-theta.vercel.app/>. Ela não foi atualizada por este Pull
+Request: o merge e a verificação do deploy de produção continuam pendentes.
+O formulário apenas valida os dados no navegador; não os envia para um
+servidor.

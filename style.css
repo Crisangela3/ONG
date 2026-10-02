@@ -296,6 +296,21 @@ label {
 
 }
 
+.cadastro__nota-obrigatoriedade {
+
+    margin: 0 0 var(--espaco-2);
+
+}
+
+.cadastro__obrigatorio,
+.cadastro__nota-obrigatoriedade span {
+
+    color: var(--cor-erro);
+
+    font-weight: bold;
+
+}
+
 /* =========================================
 
    CAMPOS DO FORMULÃRIO
@@ -356,25 +371,27 @@ textarea:focus {
 
    ========================================= */
 
-/* Campo preenchido corretamente */
-
-input:valid,
-
-select:valid,
-
-textarea:valid {
-
+#formularioCadastro input.cadastro__campo--sucesso,
+#formularioCadastro select.cadastro__campo--sucesso,
+#formularioCadastro textarea.cadastro__campo--sucesso {
     border-color: var(--cor-sucesso);
-
 }
 
-/* Campo com preenchimento invÃ¡lido */
-
-input:invalid:not(:placeholder-shown),
-
-textarea:invalid:not(:placeholder-shown) {
-
+#formularioCadastro input.cadastro__campo--erro,
+#formularioCadastro select.cadastro__campo--erro,
+#formularioCadastro textarea.cadastro__campo--erro {
     border-color: var(--cor-erro);
+}
+
+.cadastro__erro-campo {
+
+    display: block;
+
+    margin: 0 0 var(--espaco-1);
+
+    color: var(--cor-erro);
+
+    font-size: 0.9em;
 
 }
 
@@ -388,7 +405,7 @@ button {
 
     background-color: var(--cor-laranja);
 
-    color: var(--cor-branco);
+    color: var(--cor-cinza-escuro);
 
     border: none;
 
@@ -418,6 +435,8 @@ button:not(:disabled):hover {
 
     background-color: var(--cor-azul-escuro);
 
+    color: var(--cor-branco);
+
     box-shadow: var(--sombra-media);
 
 }
@@ -437,6 +456,8 @@ button:focus-visible {
 button:not(:disabled):active {
 
     background-color: var(--cor-azul);
+
+    color: var(--cor-branco);
 
     transform: scale(0.98);
 
@@ -1086,6 +1107,51 @@ form input:focus-visible, form select:focus-visible, form textarea:focus-visible
 }
 /* O atributo hidden controla a abertura por teclado, clique e JavaScript. */
 [hidden] { display: none !important; }
+
+.formulario__persistencia {
+    display: grid;
+    gap: 4px;
+    padding: 0;
+}
+
+.formulario__persistencia-consentimento {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin: 0;
+    font-size: var(--fonte-pequena);
+    font-weight: normal;
+}
+
+.formulario__persistencia-consentimento input {
+    flex: 0 0 auto;
+    margin: 0.2em 0 0;
+}
+
+.formulario__persistencia p {
+    margin: 0;
+    overflow-wrap: anywhere;
+    font-size: 0.85em;
+}
+
+.formulario__limpar-preferencia {
+    justify-self: start;
+    padding: 2px 0;
+    background: transparent;
+    color: var(--cor-azul-escuro);
+    font-size: var(--fonte-pequena);
+    font-weight: normal;
+    text-align: left;
+    text-decoration: underline;
+}
+
+.formulario__limpar-preferencia:not(:disabled):hover,
+.formulario__limpar-preferencia:not(:disabled):active {
+    background: transparent;
+    box-shadow: none;
+    color: var(--cor-azul);
+    transform: none;
+}
 
 /* Imagens do projeto */
 .identidade-ong { display: flex; align-items: center; justify-content: center; gap: var(--espaco-2); }

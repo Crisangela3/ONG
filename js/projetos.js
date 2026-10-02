@@ -1,21 +1,26 @@
+const imagemEducacaoInclusiva = new URL("../assets/educacao-inclusiva.png", import.meta.url).href;
+const imagemProjetoInclusao = new URL("../assets/projeto-inclusao.jpg", import.meta.url).href;
+const imagemCampanhaEscola = new URL("../assets/campanha-escola.jpg", import.meta.url).href;
+const imagemAcaoSustentavel = new URL("../assets/acao-sustentavel.png", import.meta.url).href;
+
 const projetos = [
     {
-        imagem: "assets/educacao-inclusiva.png",
+        imagem: imagemEducacaoInclusiva,
         descricaoImagem: "Ilustração de estudantes e cadeiras de rodas com o título Educação Inclusiva",
         titulo: "Educação inclusiva",
     },
     {
-        imagem: "assets/projeto-inclusao.jpg",
+        imagem: imagemProjetoInclusao,
         descricaoImagem: "Cartaz de mobilização por uma educação inclusiva",
         titulo: "Mobilização pela inclusão",
     },
     {
-        imagem: "assets/campanha-escola.jpg",
+        imagem: imagemCampanhaEscola,
         descricaoImagem: "Cartaz com a mensagem Todas as escolas são para todos os alunos",
         titulo: "Escola para todos",
     },
     {
-        imagem: "assets/acao-sustentavel.png",
+        imagem: imagemAcaoSustentavel,
         descricaoImagem: "Mãos segurando uma muda de planta com símbolos de ações sociais",
         titulo: "Ações sociais",
     },

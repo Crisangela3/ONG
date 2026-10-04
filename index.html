@@ -280,7 +280,6 @@
                             name="arquivoComprovante"
                             accept=".png,.jpg,.jpeg,.gif,.webp,.avif,.pdf,image/png,image/jpeg,image/gif,image/webp,image/avif,application/pdf"
                             aria-describedby="limite-arquivo statusComprovante"
-                            required
                         >
                         <small id="limite-arquivo">Formatos aceitos: imagens ou PDF. Tamanho máximo: 5 MB.</small>
                     </div>
@@ -375,6 +374,9 @@
                 da nossa ONG - Sementes do Futuro.
 
             </p>
+            <p class="cadastro__nota-obrigatoriedade">
+                Os campos marcados com <span aria-hidden="true">*</span> são obrigatórios.
+            </p>
             <div class="alerta alerta-aviso cadastro__alerta" id="alertaFeedback" role="alert" aria-labelledby="tituloAlertaFeedback" tabindex="-1" hidden>
                 <div>
                     <strong id="tituloAlertaFeedback">Atenção</strong>
@@ -397,7 +399,7 @@
 
                     <label for="nome">
 
-                        Nome completo:
+                        Nome completo: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -415,7 +417,7 @@
 
                     <label for="email">
 
-                        E-mail:
+                        E-mail: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -433,7 +435,7 @@
 
                     <label for="nascimento">
 
-                        Data de nascimento:
+                        Data de nascimento: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -453,7 +455,7 @@
 
                     <label for="cpf">
 
-                        CPF:
+                        CPF: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -479,7 +481,7 @@
 
                     <label for="telefone">
 
-                        Telefone:
+                        Telefone: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -515,7 +517,7 @@
 
                     <label for="endereco">
 
-                        Endereço:
+                        Endereço: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -533,7 +535,7 @@
 
                     <label for="numero">
 
-                        Número:
+                        Número: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -553,7 +555,7 @@
 
                     <label for="cidade">
 
-                        Cidade:
+                        Cidade: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -571,7 +573,7 @@
 
                     <label for="estado">
 
-                        Estado:
+                        Estado: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -591,7 +593,7 @@
 
                     <label for="cep">
 
-                        CEP:
+                        CEP: <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -627,7 +629,7 @@
 
                     <label for="interesse">
 
-                        Como deseja participar?
+                        Como deseja participar? <span class="cadastro__obrigatorio" aria-hidden="true">*</span>
 
                     </label>
 
@@ -680,6 +682,20 @@
                     ></textarea>
 
                 </fieldset>
+
+                <div class="formulario__persistencia">
+                    <label class="formulario__persistencia-consentimento" for="guardarPreferencia">
+                        <input type="checkbox" id="guardarPreferencia" name="guardarPreferencia">
+                        Salvar somente minha opção de participação neste navegador após validar o cadastro.
+                    </label>
+                    <p id="avisoPersistenciaFormulario">
+                        A opção é voluntária. Nome, e-mail, data de nascimento, CPF, telefone, endereço e mensagem não serão salvos.
+                    </p>
+                    <button type="button" class="formulario__limpar-preferencia" id="limparPreferencia">
+                        Apagar opção salva
+                    </button>
+                    <p id="statusPersistenciaFormulario" role="status" aria-live="polite" tabindex="-1" hidden></p>
+                </div>
 
                 <!-- =====================================
 

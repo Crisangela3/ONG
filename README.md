@@ -1,29 +1,44 @@
 # Sementes do Futuro
 
 Site estático de apresentação da ONG Sementes do Futuro. O projeto usa HTML,
-CSS e módulos JavaScript nativos, sem dependências de build.
+CSS e módulos JavaScript nativos, com Vite como ferramenta de desenvolvimento
+e build de produção.
 
-## Executar localmente
+## Desenvolvimento local
 
-Como o JavaScript usa módulos ES, abra o site por um servidor HTTP local; não
-abra `index.html` diretamente com `file://`.
+Instale as dependências e inicie o servidor de desenvolvimento:
 
-Com Python instalado, execute na pasta do projeto:
-
-```powershell
-python -m http.server 8000
+```sh
+npm install
+npm run dev
 ```
 
-Depois, acesse <http://localhost:8000>.
+Abra a URL local exibida pelo Vite. Não abra `index.html` diretamente com
+`file://`, pois o projeto usa módulos ES.
+
+## Build de produção
+
+Gere os arquivos otimizados com:
+
+```sh
+npm run build
+```
+
+O Vite compila os módulos JavaScript, minifica JavaScript e CSS, processa as
+referências estáticas e grava a versão de produção em `dist/`. Para testar
+localmente o resultado gerado, execute `npm run preview`.
 
 ## Estrutura
 
 - `index.html`: conteúdo, formulário, galeria e template dos cartões de projetos.
 - `style.css`: identidade visual, layout responsivo e estilos de interação.
+- `vite.config.js`: configuração do build e caminhos relativos para hospedagem estática.
+- `package.json`: dependências e comandos de desenvolvimento, build e preview.
 - `js/main.js`: ponto de entrada que inicializa os módulos.
 - `js/navegacao.js`: menu responsivo.
 - `js/roteador.js`: navegação entre seções e histórico do navegador.
-- `js/formulario.js`: validação do formulário e resumo de erros.
+- `js/formulario.js`: validação do formulário, mensagens junto aos campos e estados visuais de erro/sucesso durante o preenchimento.
+- `js/persistencia-formulario.js`: restaura e salva, mediante consentimento, somente a opção de participação no navegador.
 - `js/feedback.js`: notificações toast.
 - `js/modal.js`: diálogos e gerenciamento de foco.
 - `js/doacoes.js`: validação local do anexo demonstrativo, sem envio ou armazenamento.
@@ -39,17 +54,32 @@ O formulário de comprovante é apenas uma demonstração local. Ele não transm
 nem armazena arquivos ou mensagens; para habilitar recebimento real, será
 necessário configurar um serviço seguro e canais oficiais confirmados.
 
+No cadastro, a persistência no `localStorage` é opcional e requer consentimento.
+Somente a opção de participação (doação ou voluntariado) é salva e pode ser
+apagada pelo próprio usuário. Nome, e-mail, data de nascimento, CPF, telefone,
+endereço e mensagem não são persistidos.
+
 ## Fluxo de versionamento
 
-Depois de conectar o projeto a um repositório GitHub:
+O repositório remoto do projeto está no GitHub. Nesta revisão, foi criada a
+branch `develop` a partir de `main` e a branch
+`feature/activity-iv-corrections` a partir de `develop`. A Issue #1 registra o
+escopo, e o Pull Request #2 propõe integrar a branch de funcionalidade em
+`develop`. O PR permanece aberto; ainda não foi feito o merge.
 
-1. Mantenha `main` como branch estável.
-2. Crie uma branch por alteração, por exemplo `feat/acessibilidade` ou
-   `docs/guia-de-uso`.
-3. Use mensagens de commit objetivas, como `feat: adiciona atalho para o conteúdo`
-   ou `docs: documenta publicação na Vercel`.
-4. Abra um Pull Request para `main`, descreva a mudança, anexe evidências reais
-   e registre os testes executados antes de integrar.
+Nas próximas alterações, o fluxo planejado é registrar o escopo em uma Issue,
+criar uma branch `feature/*` a partir de `develop`, usar commits objetivos e
+abrir um Pull Request para revisão antes de integrar. A branch `main` deve
+permanecer estável para a versão de produção.
+
+### Convenção de mensagens de commit
+
+Todos os novos commits devem seguir o padrão Conventional Commits:
+`<tipo>: <descrição curta>`. Use um tipo que represente a alteração, como
+`feat` para funcionalidade, `fix` para correção, `docs` para documentação,
+`build` para configuração do build e `refactor` para refatoração. Exemplos:
+`feat: add project filter` e `docs: explain hash routing on Vercel`.
+Antes de criar cada commit, confira se a mensagem segue esse formato.
 
 ## Verificações antes da entrega
 
@@ -57,7 +87,7 @@ Depois de conectar o projeto a um repositório GitHub:
 - Testar links diretos com hash e os botões voltar/avançar do navegador.
 - Conferir o menu, o conteúdo e o formulário em telas estreitas e largas.
 - Confirmar que não há rolagem horizontal em telas móveis.
-- Verificar foco visível, rótulos, textos alternativos e mensagens de erro.
+- Verificar foco visível, rótulos, textos alternativos e mensagens de erro junto aos campos, tanto durante o preenchimento quanto ao enviar o formulário.
 - Auditar todas as páginas e estados com ferramentas de acessibilidade antes de
   declarar conformidade WCAG 2.1 nível AA.
 
@@ -79,20 +109,30 @@ antes de afirmar que o site atende integralmente à WCAG 2.1 AA.
 
 ## Publicação na Vercel
 
-O projeto é estático e não requer etapa de build nem instalação de dependências.
-Para publicar:
+O projeto gera arquivos estáticos com Vite. A configuração de build usada é
+`npm install`, `npm run build` e diretório de saída `dist`.
 
-1. Crie ou use um repositório GitHub que contenha estes arquivos na raiz.
-2. Na Vercel, importe esse repositório e selecione o preset **Other**.
-3. Deixe o comando de build e o diretório de saída vazios; a raiz do repositório
-   contém o `index.html` e os recursos estáticos.
-4. Faça o deploy e teste a URL gerada, incluindo a navegação por hash, imagens e
-   formulário. O formulário apenas valida os dados no navegador; não os envia
-   para um servidor.
-5. Registre a URL publicada e evidências dos testes reais na entrega.
+O roteador da aplicação usa fragmentos de URL, como `#cadastro`, para
+identificar as seções da SPA. A navegação é atualizada no navegador com
+`history.pushState` e tratada pelos eventos `popstate` e `hashchange`. Como o
+fragmento (`#...`) não é enviado ao servidor em uma requisição HTTP, a Vercel
+continua servindo o mesmo `index.html` para essas navegações; por isso, abrir
+ou atualizar uma URL com hash não exige uma regra de reescrita para cada seção.
 
-Não há uma URL de produção registrada neste documento: acrescente-a somente
-depois de concluir e verificar o deploy.
+Se a aplicação adotasse rotas sem hash, como `/cadastro`, seria necessário
+configurar a hospedagem para reescrever as rotas da SPA para `index.html`.
+Sem essa regra, acessar ou atualizar diretamente uma rota poderia resultar em
+404, pois o servidor estático tentaria localizar um arquivo nesse caminho.
 
-LINK VERCEL ADICIONADO: https://ong-swart-theta.vercel.app/
+Após o push da branch `feature/activity-iv-corrections`, a integração GitHub da
+Vercel criou automaticamente um Preview e informou o estado **Ready** no
+Pull Request #2. URL do Preview:
+<https://ong-git-feature-activity-41d382-angela-cristina-silvas-projects.vercel.app>.
+O estado e os detalhes do deploy podem ser consultados em **Deployments** na
+Vercel ou no resumo de ambientes do Pull Request.
 
+A URL de produção previamente publicada é
+<https://ong-swart-theta.vercel.app/>. Ela não foi atualizada por este Pull
+Request: o merge e a verificação do deploy de produção continuam pendentes.
+O formulário apenas valida os dados no navegador; não os envia para um
+servidor.

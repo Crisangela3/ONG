@@ -1,4 +1,4 @@
-export function inicializarFormulario({ mostrarToast, abrirModalCadastro }) {
+export function inicializarFormulario({ mostrarToast, abrirModalCadastro, salvarPreferencia }) {
     const formulario = document.getElementById("formularioCadastro");
     const alertaFeedback = document.getElementById("alertaFeedback");
     const tituloAlertaFeedback = document.getElementById("tituloAlertaFeedback");
@@ -35,17 +35,51 @@ export function inicializarFormulario({ mostrarToast, abrirModalCadastro }) {
         return "Confira este campo.";
     }
 
+    function atualizarErroDoCampo(controle) {
+        const idErro = `${controle.id}-erro`;
+        let mensagemErro = document.getElementById(idErro);
+        const descricoes = (controle.getAttribute("aria-describedby") || "")
+            .split(/\s+/)
+            .filter(Boolean);
+        const temValor = controle instanceof HTMLInputElement
+            && (controle.type === "checkbox" || controle.type === "radio")
+            ? controle.checked
+            : controle.value.trim() !== "";
+
+        if (controle.validity.valid) {
+            controle.removeAttribute("aria-invalid");
+            controle.classList.remove("cadastro__campo--erro");
+            controle.classList.toggle("cadastro__campo--sucesso", temValor);
+            mensagemErro?.remove();
+            const descricoesAtualizadas = descricoes.filter((id) => id !== idErro);
+            if (descricoesAtualizadas.length > 0) {
+                controle.setAttribute("aria-describedby", descricoesAtualizadas.join(" "));
+            } else {
+                controle.removeAttribute("aria-describedby");
+            }
+            return;
+        }
+
+        controle.setAttribute("aria-invalid", "true");
+        controle.classList.remove("cadastro__campo--sucesso");
+        controle.classList.add("cadastro__campo--erro");
+        if (!mensagemErro) {
+            mensagemErro = document.createElement("span");
+            mensagemErro.id = idErro;
+            mensagemErro.className = "cadastro__erro-campo";
+            controle.insertAdjacentElement("afterend", mensagemErro);
+        }
+        mensagemErro.textContent = mensagemDeValidacao(controle);
+        if (!descricoes.includes(idErro)) {
+            controle.setAttribute("aria-describedby", [...descricoes, idErro].join(" "));
+        }
+    }
+
     function mostrarAlerta({ focar = true } = {}) {
         const controles = Array.from(formulario.querySelectorAll("input, select, textarea"));
         const invalidos = controles.filter((controle) => !controle.validity.valid);
 
-        controles.forEach((controle) => {
-            if (controle.validity.valid) {
-                controle.removeAttribute("aria-invalid");
-            } else {
-                controle.setAttribute("aria-invalid", "true");
-            }
-        });
+        controles.forEach(atualizarErroDoCampo);
 
         listaErrosCadastro.replaceChildren();
         alertaFeedback.classList.toggle("alerta-aviso", invalidos.length > 0);
@@ -57,7 +91,9 @@ export function inicializarFormulario({ mostrarToast, abrirModalCadastro }) {
             invalidos.forEach((controle) => {
                 const item = document.createElement("li");
                 const link = document.createElement("a");
-                const rotulo = (controle.labels[0]?.textContent.trim() || controle.name).replace(/:\s*$/, "");
+                const rotulo = (controle.labels[0]?.textContent.trim() || controle.name)
+                    .replace(/\s*\*\s*:?\s*$/, "")
+                    .replace(/:\s*$/, "");
                 link.href = `#${controle.id}`;
                 link.textContent = `${rotulo}: ${mensagemDeValidacao(controle)}`;
                 item.append(link);
@@ -85,11 +121,7 @@ export function inicializarFormulario({ mostrarToast, abrirModalCadastro }) {
             return;
         }
 
-        if (controle.validity.valid) {
-            controle.removeAttribute("aria-invalid");
-        } else {
-            controle.setAttribute("aria-invalid", "true");
-        }
+        atualizarErroDoCampo(controle);
 
         if (!alertaFeedback.hidden) mostrarAlerta({ focar: false });
     }
@@ -123,11 +155,10 @@ export function inicializarFormulario({ mostrarToast, abrirModalCadastro }) {
             mostrarAlerta();
             return;
         }
-        formulario.querySelectorAll("[aria-invalid]").forEach((controle) => {
-            controle.removeAttribute("aria-invalid");
-        });
+        formulario.querySelectorAll("input, select, textarea").forEach(atualizarErroDoCampo);
         alertaFeedback.hidden = true;
 
+        salvarPreferencia();
         mostrarToast("Formulário validado!", "Este é um exemplo visual; os dados não foram enviados.");
         abrirModalCadastro();
     });

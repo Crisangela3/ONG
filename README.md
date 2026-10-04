@@ -72,6 +72,15 @@ criar uma branch `feature/*` a partir de `develop`, usar commits objetivos e
 abrir um Pull Request para revisão antes de integrar. A branch `main` deve
 permanecer estável para a versão de produção.
 
+### Convenção de mensagens de commit
+
+Todos os novos commits devem seguir o padrão Conventional Commits:
+`<tipo>: <descrição curta>`. Use um tipo que represente a alteração, como
+`feat` para funcionalidade, `fix` para correção, `docs` para documentação,
+`build` para configuração do build e `refactor` para refatoração. Exemplos:
+`feat: add project filter` e `docs: explain hash routing on Vercel`.
+Antes de criar cada commit, confira se a mensagem segue esse formato.
+
 ## Verificações antes da entrega
 
 - Testar navegação, formulário, alerta, toast e modais com mouse e teclado.
@@ -102,6 +111,18 @@ antes de afirmar que o site atende integralmente à WCAG 2.1 AA.
 
 O projeto gera arquivos estáticos com Vite. A configuração de build usada é
 `npm install`, `npm run build` e diretório de saída `dist`.
+
+O roteador da aplicação usa fragmentos de URL, como `#cadastro`, para
+identificar as seções da SPA. A navegação é atualizada no navegador com
+`history.pushState` e tratada pelos eventos `popstate` e `hashchange`. Como o
+fragmento (`#...`) não é enviado ao servidor em uma requisição HTTP, a Vercel
+continua servindo o mesmo `index.html` para essas navegações; por isso, abrir
+ou atualizar uma URL com hash não exige uma regra de reescrita para cada seção.
+
+Se a aplicação adotasse rotas sem hash, como `/cadastro`, seria necessário
+configurar a hospedagem para reescrever as rotas da SPA para `index.html`.
+Sem essa regra, acessar ou atualizar diretamente uma rota poderia resultar em
+404, pois o servidor estático tentaria localizar um arquivo nesse caminho.
 
 Após o push da branch `feature/activity-iv-corrections`, a integração GitHub da
 Vercel criou automaticamente um Preview e informou o estado **Ready** no
